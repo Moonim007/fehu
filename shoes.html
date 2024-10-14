@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehu Shop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ปรับขนาดรูปภาพในป๊อปอัพ */
+        .popup img {
+            width: 400px; /* ขนาดที่ใหญ่กว่าเพื่อดูรายละเอียด */
+            height: 400px;
+            object-fit: contain; /* รักษาสัดส่วนของรูปภาพ */
+        }
+
+        /* ตั้งค่าป๊อปอัพ */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* เนื้อหาของป๊อปอัพ */
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* ปุ่มปิดป๊อปอัพ */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- ส่วนหัวและเมนูนำทาง -->
+    <header class="navbar-1">
+        <img src="../pg/photo/logo.png"  width="50" height="50">
+        <input type="text" class="search-bar" placeholder="ค้นหา...">
+        <div class="navbar-right">
+            <button class="add-to-cart-btn" onclick="goToCart()">
+            <a href="sell.html"><span class="cart-icon">🛒 ตะกร้าสินค้า</span>
+            <span id="cart-count">0</span></button></a>
+            <button class="lang-button">TH</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับ</a>
+        <a href="help.html">ความช่วยเหลือ</a>
+    </nav>
+
+    <!-- แถบหมวดหมู่สินค้า -->
+    <aside class="sidebar">
+        <h3>หมวดหมู่สินค้า</h3>
+        <ul>
+            <li><a href="index.html">จักรยาน Fixgear</a></li>
+            <li><a href="badminton.html">ไม้แบด</a></li>
+            <li><a href="shoes.html">รองเท้า</a></li>
+        </ul>
+    </aside>
+
+    <!-- ส่วนการ์ดสินค้า -->
+    <main class="product-container">
+<!-- product 1 -->
+        <div class="product-card">
+            <img src="../pg/photo/shoes/1.png" alt="รองเท้า 1" onclick="openPopup('popupshoes1')">
+            <h4>Nike Dunk Low Retro</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('1.png', 'Nike Dunk Low Retro', 3700, 'shoes')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 1 -->
+        <div id="popupshoes1" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupshoes1')">&times;</span>
+                <img src="../pg/photo/shoes/1.png" alt="รองเท้า 1">
+                <h3>Nike Dunk Low Retro</h3>
+                <br>
+                <p style="text-align: left;">สีที่แสดง: ขาว/University Red/Concord</p>
+                <p style="text-align: left;">สไตล์: DV0833-103</p>
+                <p style="text-align: left;">ประเทศ/ภูมิภาคที่ผลิต: อินโดนีเซีย</p>
+                <br>
+                <p>ราคา : 3,700 บาท</p>
+                <button class="custom-button" onclick="addToCart('1.png', 'Nike Dunk Low Retro', 3700, 'shoes','popupshoes1')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 2 -->
+        <div class="product-card">
+            <img src="../pg/photo/shoes/2.png" alt="รองเท้า 2" onclick="openPopup('popupshoes2')">
+            <h4>Nike Air Force 1 '07 EasyOn</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('2.png', 'Nike Air Force 1-07 EasyOn', 4300, 'shoes')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 2 -->
+<div id="popupshoes2" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupshoes2')">&times;</span>
+        <img src="../pg/photo/shoes/2.png" alt="รองเท้า 2">
+        <h3>Nike Air Force 1-07 EasyOn</h3>
+        <br>
+        <p style="text-align: left;">สีที่แสดง: ขาว/ขาว/ขาว</p>
+        <p style="text-align: left;">สไตล์: FD1146-100</p>
+        <p style="text-align: left;">ประเทศ/ภูมิภาคที่ผลิต: เวียดนาม</p>
+        <br>
+        <p>ราคา : 4,300 บาท</p>
+        <button class="custom-button" onclick="addToCart('2.png', 'Nike Air Force 1-07 EasyOn', 4300, 'shoes','popupshoes2')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 3 -->
+        <div class="product-card">
+            <img src="../pg/photo/shoes/3.jpg" alt="รองเท้า 3" onclick="openPopup('popupshoes3')">
+            <h4>Air Jordan 1 Low Game Royal / Metallic Platinum</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('3.jpg', 'Air Jordan 1 Low Game Royal/Metallic Platinum', 4300, 'shoes')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 3 -->
+<div id="popupshoes3" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupshoes3')">&times;</span>
+        <img src="../pg/photo/shoes/3.jpg" alt="รองเท้า 3">
+        <h3>Air Jordan 1 Low Game Royal / Metallic Platinum</h3>
+        <br>
+        <p style="text-align: left;">สีที่แสดง: ดำ/Game Royal/Metallic Platinum/ขาว</p>
+        <p style="text-align: left;">สไตล์: 553558-007</p>
+        <p style="text-align: left;">ประเทศ/ภูมิภาคที่ผลิต: เวียดนาม</p>
+        <br>
+        <p>ราคา : 4,300 บาท</p>
+        <button class="custom-button" onclick="addToCart('3.jpg', 'Air Jordan 1 Low Game Royal/Metallic Platinum', 4300, 'shoes','popupshoes3')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 4 -->
+        <div class="product-card">
+            <img src="../pg/photo/shoes/4.jpg" alt="รองเท้า 4" onclick="openPopup('popupshoes4')">
+            <h4>Air Jordan 1 Low University Blue</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('4.jpg', 'Air Jordan 1 Low University Blue', 3700, 'shoes')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 4 -->
+<div id="popupshoes4" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupshoes4')">&times;</span>
+        <img src="../pg/photo/shoes/4.jpg" alt="รองเท้า 4">
+        <h3>Air Jordan 1 Low University Blue</h3>
+        <br>
+        <p style="text-align: left;">สีที่แสดง: University Blue/ขาว/University Blue</p>
+        <p style="text-align: left;">สไตล์: AO9944-441</p>
+        <p style="text-align: left;">ประเทศ/ภูมิภาคที่ผลิต: จีน, เวียดนาม</p>
+        <br>
+        <p>ราคา : 3,700 บาท</p>
+        <button class="custom-button" onclick="addToCart('4.jpg', 'Air Jordan 1 Low University Blue', 3700, 'shoes','popupshoes4')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 5 -->
+        <div class="product-card">
+            <img src="../pg/photo/shoes/5.jpg" alt="รองเท้า 5" onclick="openPopup('popupshoes5')">
+            <h4>Nike Air Force 1 LV8</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('5.jpg', 'Nike Air Force 1 LV8', 1680, 'shoes')">เพิ่มลงตะกร้า</button>
+        </div>
+    </main>
+<!-- Popup for product 5 -->
+<div id="popupshoes5" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupshoes5')">&times;</span>
+        <img src="../pg/photo/shoes/5.jpg" alt="รองเท้า 5">
+        <h3>Nike Air Force 1 LV8</h3>
+        <br>
+        <p style="text-align: left;">สีที่แสดง: Coconut Milk/Bicoastal/Gum Dark Brown/Vintage Green</p>
+        <p style="text-align: left;">สไตล์: FN4731-100</p>
+        <p style="text-align: left;">ประเทศ/ภูมิภาคที่ผลิต: อินโดนีเซีย</p>
+        <br>
+        <p>ราคา : 3,700 บาท</p>
+        <button class="custom-button" onclick="addToCart('5.jpg', 'Nike Air Force 1 LV8', 3700, 'shoes','popupshoes5')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+
+    <script>
+        function openPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        function addToCart(image, name, price, type) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let item = cart.find(item => item.image === image && item.type === type);
+            
+            // ถ้ามีสินค้าซ้ำ ให้เพิ่มจำนวนขึ้น
+            if (item) {
+                item.quantity += 1;
+            } else {
+                // ถ้าไม่มีสินค้านี้ในตะกร้า ให้เพิ่มสินค้าใหม่
+                cart.push({ image, name, price, quantity: 1, type });
+            }
+
+            // บันทึกตะกร้าลงใน localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // อัปเดตจำนวนในตะกร้า
+            updateCartCount();
+
+            // เปลี่ยนหน้าไปยัง sell.html
+            setTimeout(() => {
+                window.location.href = 'sell.html';
+            }, 100);
+        }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount(); // อัปเดตจำนวนสินค้าที่อยู่ในตะกร้าเมื่อโหลดหน้าเว็บ
+        });
+    </script>
+</body>
+</html>

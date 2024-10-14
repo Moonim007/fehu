@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehu Shop</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .cart-container {
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .cart-item img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .cart-item h3 {
+            margin: 0;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .cart-total {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .checkout-button {
+            background-color: #e65c00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .checkout-button:hover {
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar-1">
+        <img src="../pg/photo/logo.png"  width="50" height="50">
+        <input type="text" class="search-bar" placeholder="ค้นหา...">
+        <div class="navbar-right">
+            <button class="add-to-cart-btn" onclick="goToCart()">
+                <a href="sell.html"><span class="cart-icon">🛒 ตะกร้าสินค้า</span></a>
+            <button class="lang-button">TH</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับ</a>
+        <a href="help.html">ความช่วยเหลือ</a>
+    </nav>
+
+    <article>
+        <div class="cart-container" id="cart">
+            <!-- รายการสินค้าในตะกร้าจะถูกแสดงที่นี่โดย JavaScript -->
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total" id="cart-total">
+                <!-- ยอดรวมสินค้าจะถูกคำนวณโดย JavaScript -->
+            </div>
+            <button class="checkout-button" onclick="checkout()">ชำระเงิน</button>
+        </div>
+    </article>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartContainer = document.getElementById('cart');
+    let cartTotal = document.getElementById('cart-total');
+    let total = 0;
+
+    function renderCart() {
+        cartContainer.innerHTML = '';
+        total = 0;
+
+        cart.forEach(item => {
+            let cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+
+            // เพิ่มเงื่อนไขสำหรับหมวดหมู่รองเท้า
+            let itemImage = document.createElement('img');
+            let imagePath;
+            if (item.type === 'bike') {
+                imagePath = `../pg/photo/bike/${item.image}`;
+            } else if (item.type === 'bad') {
+                imagePath = `../pg/photo/bad/${item.image}`;
+            } else if (item.type === 'shoes') { // เพิ่มเงื่อนไขสำหรับรองเท้า
+                imagePath = `../pg/photo/shoes/${item.image}`;
+            }
+            itemImage.src = imagePath;
+            cartItem.appendChild(itemImage);
+
+            // แสดงรายละเอียดของสินค้า
+            let itemDetails = document.createElement('div');
+            itemDetails.innerHTML = `<h3>${item.name}</h3><p>ราคา: ${item.price} บาท</p>`;
+
+            // ส่วนควบคุมจำนวนสินค้า
+            let quantityControls = document.createElement('div');
+            quantityControls.className = 'quantity-controls';
+            let minusButton = document.createElement('button');
+            minusButton.textContent = '-';
+            minusButton.onclick = () => updateQuantity(item, -1);
+            let quantityDisplay = document.createElement('span');
+            quantityDisplay.textContent = item.quantity;
+            let plusButton = document.createElement('button');
+            plusButton.textContent = '+';
+            plusButton.onclick = () => updateQuantity(item, 1);
+            quantityControls.appendChild(minusButton);
+            quantityControls.appendChild(quantityDisplay);
+            quantityControls.appendChild(plusButton);
+
+            itemDetails.appendChild(quantityControls);
+            cartItem.appendChild(itemDetails);
+
+            cartContainer.appendChild(cartItem);
+
+            total += item.price * item.quantity;
+        });
+
+        cartTotal.textContent = `รวมทั้งหมด: ${total} บาท`;
+    }
+
+    function updateQuantity(item, change) {
+        let index = cart.findIndex(cartItem => cartItem.name === item.name && cartItem.type === item.type);
+        if (index !== -1) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1); // ลบสินค้าถ้าจำนวนเป็น 0
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+    }
+
+    renderCart();
+});
+
+function checkout() {
+    alert('ขอบคุณที่ชำระเงิน! การชำระเงินสำเร็จ');
+    localStorage.removeItem('cart');
+    location.reload();
+}
+
+    </script>
+</body>
+</html>

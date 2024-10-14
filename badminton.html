@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehu Shop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ปรับขนาดรูปภาพในป๊อปอัพ */
+        .popup img {
+            width: 400px; /* ขนาดที่ใหญ่กว่าเพื่อดูรายละเอียด */
+            height: 400px;
+            object-fit: contain; /* รักษาสัดส่วนของรูปภาพ */
+        }
+
+        /* ตั้งค่าป๊อปอัพ */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* เนื้อหาของป๊อปอัพ */
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* ปุ่มปิดป๊อปอัพ */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- ส่วนหัวและเมนูนำทาง -->
+    <header class="navbar-1">
+        <img src="../pg/photo/logo.png"  width="50" height="50">
+        <input type="text" class="search-bar" placeholder="ค้นหา...">
+        <div class="navbar-right">
+            <button class="add-to-cart-btn" onclick="goToCart()">
+            <a href="sell.html"><span class="cart-icon">🛒 ตะกร้าสินค้า</span>
+            <span id="cart-count">0</span></button></a>
+            <button class="lang-button">TH</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับ</a>
+        <a href="help.html">ความช่วยเหลือ</a>
+    </nav>
+
+    <!-- แถบหมวดหมู่สินค้า -->
+    <aside class="sidebar">
+        <h3>หมวดหมู่สินค้า</h3>
+        <ul>
+            <li><a href="index.html">จักรยาน Fixgear</a></li>
+            <li><a href="#">ไม้แบด</a></li>
+            <li><a href="#">รองเท้า</a></li>
+        </ul>
+    </aside>
+
+    <!-- ส่วนการ์ดสินค้า -->
+    <main class="product-container">
+<!-- product 1 -->
+        <div class="product-card">
+            <img src="../pg/photo/bad/1.png" alt="ไม้แบต 1" onclick="openPopup('popupBad1')">
+            <h4>KAWASAKI Assasin 6690</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('1.png', 'KAWASAKI Assasin 6690', 2000, 'bad')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 1 -->
+        <div id="popupBad1" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupBad1')">&times;</span>
+                <img src="../pg/photo/bad/1.png" alt="ไม้แบต 1">
+                <h3>KAWASAKI Assasin 6690</h3>
+                <br>
+                <p style="text-align: left;">เหมาะสำหรับผู้เล่นระดับกลางถึงระดับสูง ก้านไม้มีความทนทาน ไม่มีการขึงเอ็น แถมเอ็นแบดมินตัน</p>
+                <p style="text-align: left;">ระดับการใช้งาน : ระดับกลาง</p>
+                <p style="text-align: left;">ฟังก์ชั่นการทำงาน : ควบคุม</p>
+                <br>
+                <p>ราคา : 2,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('1.png', 'KAWASAKI Assasin 6690', 2000, 'bad','popupBad1')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 2 -->
+        <div class="product-card">
+            <img src="../pg/photo/bad/2.png" alt="ไม้แบต 2" onclick="openPopup('popupBad2')">
+            <h4>FELET TJ Power - Speed</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('2.png', 'FELET TJ Power - Speed', 2590, 'bad')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 2 -->
+<div id="popupBad2" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupBad2')">&times;</span>
+        <img src="../pg/photo/bad/2.png" alt="ไม้แบต 2">
+        <h3>FELET TJ Power - Speed</h3>
+        <br>
+        <p style="text-align: left;">วัสดุทำจากกราไฟท์หลอมร้อนจากประเทศญี่ปุ่น ผสานเทคโนโลยี Carbon Nano</p>
+        <p style="text-align: left;">น้ำหนักไม้แบด 82 +/- 2 g. (4U)</p>
+        <p style="text-align: left;">BCP: 280 - 285 มม. (หัวกลางค่อนไปทางเบา)</p>
+        <br>
+        <p>ราคา : 2,590 บาท</p>
+        <button class="custom-button" onclick="addToCart('2.png', 'FELET TJ Power - Speed', 2590, 'bad','popupBad2')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 3 -->
+        <div class="product-card">
+            <img src="../pg/photo/bad/3.png" alt="ไม้แบต 3" onclick="openPopup('popupBad3')">
+            <h4>YONEX Astrox 88S Pro</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('3.png', 'YONEX Astrox 88S Pro', 5455, 'bad')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 3 -->
+<div id="popupBad3" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupBad3')">&times;</span>
+        <img src="../pg/photo/bad/3.png" alt="ไม้แบต 3">
+        <h3>YONEX Astrox 88S Pro</h3>
+        <br>
+        <p style="text-align: left;">ดีไซน์กรอบและความยาวไม้แบบใหม่</p>
+        <p style="text-align: left;">ความยืดหยุ่นของก้าน : แข็ง</p>
+        <p style="text-align: left;">กรอบไม้ :H.M. Graphite + Volume cut resin + Tungsten</p>
+        <p style="text-align: left;">ก้านไม้ : H.M. Graphite + Namd</p>
+        <p style="text-align: left;">น้ำหนัก : 4U (ประมาณ 83g) G5,6/3U (ประมาณ 88g) G4,5,6</p>
+        <br>
+        <p>ราคา : 5,455 บาท</p>
+        <button class="custom-button" onclick="addToCart('3.png', 'YONEX Astrox 88S Pro', 5455, 'bad','popupBad3')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 4 -->
+        <div class="product-card">
+            <img src="../pg/photo/bad/4.png" alt="ไม้แบต 4" onclick="openPopup('popupBad4')">
+            <h4>YONEX Astrox 99 Play</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('4.png', 'YONEX Astrox 99 Play', 1870, 'bad')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 4 -->
+<div id="popupBad4" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupBad4')">&times;</span>
+        <img src="../pg/photo/bad/4.png" alt="ไม้แบต 4">
+        <h3>YONEX Astrox 99 Play</h3>
+        <br>
+        <p style="text-align: left;">เทคโนโลยี ISOMETRICTM ช่วยขยายจุด Sweet Spot</p>
+        <p style="text-align: left;">ก้านไม้เรียวบาง</p>
+        <p style="text-align: left;">ก้านไม้ : Graphite</p>
+        <p style="text-align: left;">กรอบไม้ : Graphite</p>
+        <p style="text-align: left;">ขนาดกริป : G5,6</p>
+        <br>
+        <p>ราคา : 1,870 บาท</p>
+        <button class="custom-button" onclick="addToCart('4.png', 'YONEX Astrox 99 Play', 1870, 'bad','popupBad4')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+<!-- product 5 -->
+        <div class="product-card">
+            <img src="../pg/photo/bad/5.png" alt="ไม้แบต 5" onclick="openPopup('popupBad5')">
+            <h4>BABOLAT Satelite Gravity 78 Unstrung</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('5.png', 'BABOLAT Satelite Gravity 78 Unstrung', 1680, 'bad')">เพิ่มลงตะกร้า</button>
+        </div>
+    </main>
+<!-- Popup for product 5 -->
+<div id="popupBad5" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popupBad5')">&times;</span>
+        <img src="../pg/photo/bad/5.png" alt="ไม้แบต 5">
+        <h3>BABOLAT Satelite Gravity 78 Unstrung</h3>
+        <br>
+        <p style="text-align: left;">แร็คเก็ตน้ำหนักเบา ช่วยให้เคลื่อนไหวได้อย่างคล่องตัวและควบคุมได้แม่นยำ</p>
+        <p style="text-align: left;">น้ำหนัก : 78 กรัม (+/- 3 กรัม)</p>
+        <p style="text-align: left;">บาลานซ์ : 295 มม.(+/- 5 มม.)</p>
+        <p style="text-align: left;">ความยาว : 675 มม.</p>
+        <br>
+        <p>ราคา : 1,680 บาท</p>
+        <button class="custom-button" onclick="addToCart('5.png', 'BABOLAT Satelite Gravity 78 Unstrung', 1680, 'bad','popupBad5')">เพิ่มลงตะกร้า</button>
+    </div>
+</div>
+
+    <script>
+        function openPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        function addToCart(image, name, price, type) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let item = cart.find(item => item.image === image && item.type === type);
+            
+            // ถ้ามีสินค้าซ้ำ ให้เพิ่มจำนวนขึ้น
+            if (item) {
+                item.quantity += 1;
+            } else {
+                // ถ้าไม่มีสินค้านี้ในตะกร้า ให้เพิ่มสินค้าใหม่
+                cart.push({ image, name, price, quantity: 1, type });
+            }
+
+            // บันทึกตะกร้าลงใน localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // อัปเดตจำนวนในตะกร้า
+            updateCartCount();
+
+            // เปลี่ยนหน้าไปยัง sell.html
+            setTimeout(() => {
+                window.location.href = 'sell.html';
+            }, 100);
+        }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount(); // อัปเดตจำนวนสินค้าที่อยู่ในตะกร้าเมื่อโหลดหน้าเว็บ
+        });
+    </script>
+</body>
+</html>

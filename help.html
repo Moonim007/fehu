@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehu Shop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header img {
+            width: 50px;
+        }
+
+        .header .search-bar {
+            flex: 1;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .header .right-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .search-box {
+            text-align: center;
+        }
+
+        .search-box input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .help-sections {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+
+        .help-section {
+            width: 23%;
+        }
+
+        .help-section h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .help-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .help-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .help-section ul li a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .help-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ส่วนหัวและเมนูนำทาง -->
+    <header class="navbar-1">
+        <img src="../pg/photo/logo.png"  width="50" height="50">
+        <input type="text" class="search-bar" placeholder="ค้นหา...">
+        <div class="navbar-right">
+            <button class="add-to-cart-btn" onclick="goToCart()">
+            <a href="sell.html"><span class="cart-icon">🛒 ตะกร้าสินค้า</span>
+            <span id="cart-count">0</span></button></a>
+            <button class="lang-button">TH</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับ</a>
+        <a href="help.html">ความช่วยเหลือ</a>
+    </nav>
+
+    <!-- แถบหมวดหมู่สินค้า -->
+    <aside class="sidebar">
+        <h3>หมวดหมู่สินค้า</h3>
+        <ul>
+            <li><a href="index.html">จักรยาน Fixgear</a></li>
+            <li><a href="badminton.html">ไม้แบด</a></li>
+            <li><a href="shoes.html">รองเท้า</a></li>
+        </ul>
+    </aside>
+
+
+    <div class="main-container">
+        <div class="search-box">
+            <h1>รับความช่วยเหลือ</h1>
+            <input type="text" placeholder="เราจะช่วยเหลือคุณในเรื่องใดได้บ้าง">
+        </div>
+
+        <div class="help-sections">
+            <div class="help-section">
+                <h3>การคืนสินค้า</h3>
+                <ul>
+                    <li><a href="#">นโยบายการคืนสินค้าของ Fehu คืออะไร</a></li>
+                    <li><a href="#">วิธีคืนสินค้าที่สั่งซื้อจาก Fehu</a></li>
+                    <li><a href="#">ฉันจะรับเงินคืนได้อย่างไร</a></li>
+                    <li><a href="#">ดูทั้งหมด</a></li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h3>การจัดส่งและการส่งมอบ</h3>
+                <ul>
+                    <li><a href="#">ตัวเลือกการส่งมอบสินค้าของ Fehu มีอะไรบ้าง</a></li>
+                    <li><a href="#">ฉันจะรับสิทธิ์การส่งมอบสินค้าฟรีได้อย่างไร</a></li>
+                    <li><a href="#">คำสั่งซื้อของฉันสามารถจัดส่งข้ามประเทศได้หรือไม่</a></li>
+                    <li><a href="#">ดูทั้งหมด</a></li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h3>การสั่งซื้อและการชำระเงิน</h3>
+                <ul>
+                    <li><a href="#">คำสั่งซื้อ Fehu ของฉันอยู่ที่ไหน</a></li>
+                    <li><a href="#">ฉันจะยกเลิกหรือเปลี่ยนคำสั่งซื้อได้อย่างไร</a></li>
+                    <li><a href="#">ตัวเลือกการชำระเงินของ Fehu มีอะไรบ้าง</a></li>
+                    <li><a href="#">ดูทั้งหมด</a></li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h3>Fehu Membership และแอพ</h3>
+                <ul>
+                    <li><a href="#">Fehu Membership คืออะไร</a></li>
+                    <li><a href="#">ฉันจะเข้าร่วมการจับสลากซื้อสินค้าได้อย่างไร</a></li>
+                    <li><a href="#">ฉันจะดาวน์โหลดแอพ Fehu ได้อย่างไร</a></li>
+                    <li><a href="#">ดูทั้งหมด</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h1>ติดต่อเรา</h1>
+            <br>
+            <p style="text-align: left;">
+                ที่ FEHU เราให้ความสำคัญกับการบริการและการดูแลลูกค้าอย่างใกล้ชิด หากคุณมีคำถาม ต้องการสอบถามรายละเอียดเพิ่มเติมเกี่ยวกับสินค้า บริการสั่งจอง หรือปัญหาเกี่ยวกับการสั่งซื้อ เราพร้อมให้ความช่วยเหลือเสมอ คุณสามารถติดต่อเราได้ผ่านช่องทางดังต่อไปนี้:</p>
+            <br>
+            <p style="text-align: left;">เวลาทำการ: [วันและเวลาทำการของร้าน]</p>
+            <p style="text-align: left;">(จันทร์-ศุกร์ 10.00 - 20.00 น. : เสาร์-อาทิตย์ 11.00 - 19.00 น.)</p>
+            </div>
+    </div>
+
+</body>
+</html>
