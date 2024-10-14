@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehu Shop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ปรับขนาดรูปภาพในป๊อปอัพ */
+        .popup img {
+            width: 400px; /* ขนาดที่ใหญ่กว่าเพื่อดูรายละเอียด */
+            height: 400px;
+            object-fit: contain; /* รักษาสัดส่วนของรูปภาพ */
+        }
+
+        /* ตั้งค่าป๊อปอัพ */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* เนื้อหาของป๊อปอัพ */
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* ปุ่มปิดป๊อปอัพ */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- ส่วนหัวและเมนูนำทาง -->
+    <header class="navbar-1">
+        <img src="../pg/photo/logo.png"  width="50" height="50">
+        <input type="text" class="search-bar" placeholder="ค้นหา...">
+        <div class="navbar-right">
+            <button class="add-to-cart-btn" onclick="goToCart()">
+            <a href="sell.html"><span class="cart-icon">🛒 ตะกร้าสินค้า</span>
+            <span id="cart-count">0</span></button></a>
+            <button class="lang-button">TH</button>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับ</a>
+        <a href="help.html">ความช่วยเหลือ</a>
+    </nav>
+
+    <!-- แถบหมวดหมู่สินค้า -->
+    <aside class="sidebar">
+        <h3>หมวดหมู่สินค้า</h3>
+        <ul>
+            <li><a href="index.html">จักรยาน Fixgear</a></li>
+            <li><a href="badminton.html">ไม้แบด</a></li>
+            <li><a href="shoes.html">รองเท้า</a></li>
+        </ul>
+    </aside>
+
+    <!-- ส่วนการ์ดสินค้า -->
+    <main class="product-container">
+<!-- product 1 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/1.jpg" alt="จักรยาน 1" onclick="openPopup('popupModel1')">
+            <h4>875 Madison RS</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('1.jpg', '875 Madison RS', 87000, 'bike', 'popupModel1')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 1 -->
+        <div id="popupModel1" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel1')">&times;</span>
+                <img src="../pg/photo/bike/1.jpg" alt="จักรยาน 1">
+                <h3>875 Madison RS</h3>
+                <br>
+                <p style="text-align: left;">Handlebar : LOOK Alloy LS2 compact</p>
+                <p style="text-align: left;">Weight : 7.3 kg* (Size M / without pedals) *estimate</p>
+                <p style="text-align: left;">Frame : UD carbon-finish headset compatible seat post diameter 31,6 mm</p>
+                <br>
+                <p>ราคา : 87,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('1.jpg', '875 Madison RS', 87000, 'bike','popupModel1')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 2 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/2.png" alt="จักรยาน 2" onclick="openPopup('popupModel2')">
+            <h4>WEAPON Bullet Aero Marble Gray</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('2.png', 'WEAPON Bullet Aero Marble Gray', 33000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 2 -->
+        <div id="popupModel2" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel2')">&times;</span>
+                <img src="../pg/photo/bike/2.png" alt="จักรยาน 2">
+                <h3>WEAPON Bullet Aero Marble Gray</h3>
+                <br>
+                <p style="text-align: left;">Frame : Aluminium T6061 butted  tubing</p>
+                <p style="text-align: left;">Headset : IS 41.8 -52mm / 28.6 mm (Included)</p>
+                <p style="text-align: left;">Weight : Frame 1750g (Size M) , Fork 405g (uncut) , Seatpost: 430g</p>
+                <br>
+                <p>ราคา : 33,000 บาท</p>
+                <button class="add-to-cart-btn" onclick="addToCart('2.jpg', 'WEAPON Bullet Aero Marble Gray', 33000, 'bike','popupModel2')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 3 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/3.png" alt="จักรยาน 3" onclick="openPopup('popupModel3')">
+            <h4>WEAPON Bullet Aero Track Chamoleon</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('3.png', 'WEAPON Bullet Aero Track Chamoleon', 33000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 3 -->
+        <div id="popupModel3" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel3')">&times;</span>
+                <img src="../pg/photo/bike/3.png" alt="จักรยาน 3">
+                <h3>WEAPON Bullet Aero Track Chamoleon</h3>
+                <br>
+                <p style="text-align: left;">Frame : WEAPON Bullet, Chamoleon, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A40 40mm alloy track wheel (Front & Rear), 2070g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 33,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('3.png', 'WEAPON Bullet Aero Track Chamoleon', 33000, 'bike','popupModel3')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 4 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/4.png" alt="จักรยาน 4" onclick="openPopup('popupModel4')">
+            <h4>TSUNAMI SNM100 ELITE Matte Black</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('4.png', 'TSUNAMI SNM100 ELITE Matte Black', 25000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 4 -->
+        <div id="popupModel4" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel4')">&times;</span>
+                <img src="../pg/photo/bike/4.png" alt="จักรยาน 4">
+                <h3>TSUNAMI SNM100 ELITE Matte Black</h3>
+                <br>
+                <p style="text-align: left;">Frame : TSUNAMI SNM100 Elite , Matte Black, Size XS/S/M/L/XL/XXL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A50 50mm alloy track wheel (Front & Rear), 1990g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Elite Raiser bar(31.8mm*L620) , 270g / Drop bar (Ø31.8mm*L420) ,280g (Optional)</p>
+                <br>
+                <p>ราคา : 25,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('4.png', 'TSUNAMI SNM100 ELITE Matte Black', 25000, 'bike','popupModel4')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 5 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/5.png" alt="จักรยาน 5" onclick="openPopup('popupModel5')">
+            <h4>TSUNAMI SNM300 Fixie bike Cement Gray</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('5.png', 'TSUNAMI SNM300 Fixie bike Cement Gray', 23000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 5 -->
+        <div id="popupModel5" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel5')">&times;</span>
+                <img src="../pg/photo/bike/5.png" alt="จักรยาน 5">
+                <h3>TSUNAMI SNM300 Fixie bike Cement Gray</h3>
+                <br>
+                <p style="text-align: left;">Frame : TSUNAMI SNM300, Cement Gray, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A30 30mm alloy track wheel (Front & Rear), 1870g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 23,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('5.png', 'TSUNAMI SNM300 Fixie bike Cement Gray', 23000, 'bike','popupModel5')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 6 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/6.png" alt="จักรยาน 6" onclick="openPopup('popupModel6')">
+            <h4>TSUNAMI SNM100 Red</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('6.png', 'TSUNAMI SNM100 Red', 20000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 6 -->
+        <div id="popupModel6" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel6')">&times;</span>
+                <img src="../pg/photo/bike/6.png" alt="จักรยาน 6">
+                <h3>TSUNAMI SNM100 Red</h3>
+                <br>
+                <p style="text-align: left;">Frame : TSUNAMI SNM100 , Red, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A30 30mm alloy track wheel (Front & Rear), 1870g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 20,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('6.png', 'TSUNAMI SNM100 Red', 20000, 'bike','popupModel6')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 7 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/7.png" alt="จักรยาน 7" onclick="openPopup('popupModel7')">
+            <h4>TSUNAMI SNM100 Raw Polish</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('7.png', 'TSUNAMI SNM100 Raw Polish', 3390, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 7 -->
+        <div id="popupModel7" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel7')">&times;</span>
+                <img src="../pg/photo/bike/7.png" alt="จักรยาน 7">
+                <h3>TSUNAMI SNM100 Raw Polish</h3>
+                <br>
+                <p style="text-align: left;">Frame : TSUNAMI SNM100 , Raw Polish, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A30 30mm alloy track wheel (Front & Rear), 1870g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 20,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('7.png', 'TSUNAMI SNM100 Raw Polish', 20000, 'bike','popupModel7')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 8 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/8.png" alt="จักรยาน 8" onclick="openPopup('popupModel8')">
+            <h4>TSUNAMI SNM100 Cream</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('8.png', 'TSUNAMI SNM100 Cream', 5290, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 8 -->
+        <div id="popupModel8" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel8')">&times;</span>
+                <img src="../pg/photo/bike/8.png" alt="จักรยาน 8">
+                <h3>TSUNAMI SNM100 Cream</h3>
+                <br>
+                <p style="text-align: left;">Frame : TSUNAMI SNM100 , Cream , Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A30 30mm alloy track wheel (Front & Rear), 1870g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 20,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('8.png', 'TSUNAMI SNM100 Cream', 20000, 'bike','popupModel8')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 9 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/9.webp" alt="จักรยาน 9" onclick="openPopup('popupModel9')">
+            <h4>WEAPON C01 Black Purple</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('9.webp', 'WEAPON C01 Black Purple', 15000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 9 -->
+        <div id="popupModel9" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel9')">&times;</span>
+                <img src="../pg/photo/bike/9.webp" alt="จักรยาน 9">
+                <h3>WEAPON C01 Black Purple</h3>
+                <br>
+                <p style="text-align: left;">Frame : WEAPON C01, Black Purple, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A30 30mm alloy track wheel (Front & Rear), 1870g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 15,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('9.webp', 'WEAPON C01 Black Purple', 15000, 'bike','popupModel9')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+<!-- product 10 -->
+        <div class="product-card">
+            <img src="../pg/photo/bike/10.png" alt="จักรยาน 10" onclick="openPopup('popupModel10')">
+            <h4>WEAPON Bullet Aero Track Marble Red</h4>
+            <br>
+            <button class="custom-button" onclick="addToCart('10.png', 'WEAPON Bullet Aero Track Marble Red', 30000, 'bike')">เพิ่มลงตะกร้า</button>
+        </div>
+<!-- Popup for product 10 -->
+        <div id="popupModel10" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupModel8')">&times;</span>
+                <img src="../pg/photo/bike/10.png" alt="จักรยาน 10">
+                <h3>WEAPON C01 Black Purple</h3>
+                <br>
+                <p style="text-align: left;">Frame : WEAPON Bullet, Marble Red, Size S/M/L/XL (Optional)</p>
+                <p style="text-align: left;">Wheel : WEAPON A40 40mm alloy track wheel (Front & Rear), 2070g</p>
+                <p style="text-align: left;">Handlebar : WEAPON Raiser bar(31.8mm*L620) , 280g / Drop bar (Ø31.8mm*L420) ,360g (Optional)</p>
+                <br>
+                <p>ราคา : 30,000 บาท</p>
+                <button class="custom-button" onclick="addToCart('10.png', 'WEAPON C01 Black Purple', 30000, 'bike','popupModel10')">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+
+        function addToCart(image, name, price, type, popupId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let item = cart.find(item => item.image === image && item.type === type);
+            
+            // ถ้ามีสินค้าซ้ำ ให้เพิ่มจำนวนขึ้น
+            if (item) {
+                item.quantity += 1;
+            } else {
+                // ถ้าไม่มีสินค้านี้ในตะกร้า ให้เพิ่มสินค้าใหม่
+                cart.push({ image, name, price, quantity: 1, type });
+            }
+
+            // บันทึกตะกร้าลงใน localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // อัปเดตจำนวนในตะกร้า
+            updateCartCount();
+
+            // เปลี่ยนหน้าไปยัง sell.html
+            setTimeout(() => {
+                window.location.href = 'sell.html';
+            }, 100);
+        }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount(); // อัปเดตจำนวนสินค้าที่อยู่ในตะกร้าเมื่อโหลดหน้าเว็บ
+        });
+    </script>
+</body>
+</html>
